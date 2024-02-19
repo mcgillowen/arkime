@@ -386,6 +386,7 @@ LOCAL void arkime_rules_load_add_field(ArkimeRule_t *rule, int pos, char *key)
         }
         break;
     case ARKIME_FIELD_TYPE_CERTSINFO:
+    case ARKIME_FIELD_TYPE_OCSFDNS:
         // Unsupported
         break;
     }
@@ -618,6 +619,8 @@ LOCAL void arkime_rules_parser_load_rule(char *filename, YamlNode_t *parent)
 
             case ARKIME_FIELD_TYPE_CERTSINFO:
                 CONFIGEXIT("%s: Currently don't support any certs fields", filename);
+            case ARKIME_FIELD_TYPE_OCSFDNS:
+                CONFIGEXIT("%s: Currently don't support any OCSF DNS fields", filename);
             }
 
             if (node->value) {
@@ -1134,6 +1137,7 @@ LOCAL void arkime_rules_check_rule_fields(ArkimeSession_t *const session, Arkime
                 RULE_LOG_INT(HASH_COUNT(s_, *shash));
                 break;
             case ARKIME_FIELD_TYPE_CERTSINFO:
+            case ARKIME_FIELD_TYPE_OCSFDNS:
                 // Unsupported
                 break;
             } /* switch */
@@ -1259,6 +1263,7 @@ LOCAL void arkime_rules_check_rule_fields(ArkimeSession_t *const session, Arkime
             }
             break;
         case ARKIME_FIELD_TYPE_CERTSINFO:
+        case ARKIME_FIELD_TYPE_OCSFDNS:
             // Unsupported
             break;
         } /* switch */

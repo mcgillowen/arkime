@@ -167,6 +167,74 @@ typedef struct {
 typedef HASH_VAR(s_, ArkimeCertsInfoHash_t, ArkimeCertsInfoHead_t, 1);
 typedef HASH_VAR(s_, ArkimeCertsInfoHashStd_t, ArkimeCertsInfoHead_t, 5);
 
+typedef enum {
+    OCSFDNS_RR_A          =   1,
+    OCSFDNS_RR_NS         =   2,
+    OCSFDNS_RR_CNAME      =   5,
+    OCSFDNS_RR_MX         =  15,
+    OCSFDNS_RR_AAAA       =  28
+} ArkimeOCSFDNSType_t;
+
+typedef struct arkime_ocsfdnsanswer_mxrdata {
+    uint16_t preference;
+    char    *exchange;
+} ArkimeOCSFDNSMXRDATA_t;
+
+typedef struct arkime_ocsfdnsanswer {
+    struct arkime_ocsfdnsanswer *t_next, *t_prev;
+    ArkimeStringHead_t           flags;
+    char                        *rdata;
+    union {
+        char                                *cname;
+        ArkimeOCSFDNSMXRDATA_t              *mx;
+        char                                *nsdname;
+        uint32_t                            ipA;
+        struct in6_addr                     *ipAAAA;
+    };
+    uint16_t                     packet_uid;
+    char                        *class;
+    char                        *type;
+    uint16_t                     type_id; // Only used for choosing correct RDATA in union
+    uint32_t                     ttl;
+} ArkimeOCSFDNSAnswer_t;
+
+typedef struct {
+    struct arkime_ocsfdnsanswer *t_next, *t_prev;
+    int                          t_count;
+} ArkimeOCSFDNSAnswerHead_t;
+
+typedef HASH_VAR(t_, ArkimeOCSFDNSAnswerHash_t, ArkimeOCSFDNSAnswerHead_t, 1);
+typedef HASH_VAR(t_, ArkimeOCSFDNSAnswerHashStd_t, ArkimeOCSFDNSAnswerHead_t, 10);
+
+typedef struct {
+    uint8_t  opcode_id;
+    char    *opcode;
+    char    *hostname;
+    uint16_t packet_uid;
+    char    *class;
+    char    *type;
+} ArkimeOCSFDNSQuery_t;
+
+typedef struct arkime_ocsfdns {
+    struct arkime_ocsfdns    *t_next, *t_prev;
+    uint32_t                  t_hash;
+    short                     t_bucket;
+    uint8_t                   activity_id;
+    ArkimeOCSFDNSAnswerHead_t answers;
+    ArkimeOCSFDNSQuery_t      query;
+    struct timeval            query_ts;
+    struct timeval            response_ts;
+    char                     *rcode;
+    int8_t                    rcode_id;
+} ArkimeOCSFDNS_t;
+
+typedef struct {
+    struct arkime_ocsfdns *t_next, *t_prev;
+    int                    t_count;
+} ArkimeOCSFDNSHead_t;
+
+typedef HASH_VAR(t_, ArkimeOCSFDNSHash_t, ArkimeOCSFDNSHead_t, 1);
+typedef HASH_VAR(t_, ArkimeOCSFDNSHashStd_t, ArkimeOCSFDNSHead_t, 10);
 
 /******************************************************************************/
 /*
@@ -187,7 +255,8 @@ typedef enum {
     ARKIME_FIELD_TYPE_CERTSINFO,
     ARKIME_FIELD_TYPE_FLOAT,
     ARKIME_FIELD_TYPE_FLOAT_ARRAY,
-    ARKIME_FIELD_TYPE_FLOAT_GHASH
+    ARKIME_FIELD_TYPE_FLOAT_GHASH,
+    ARKIME_FIELD_TYPE_OCSFDNS
 } ArkimeFieldType;
 
 #define ARKIME_FIELD_TYPE_IS_INT(t) (t >= ARKIME_FIELD_TYPE_INT && t <= ARKIME_FIELD_TYPE_INT_GHASH)
@@ -259,6 +328,7 @@ typedef struct {
         ArkimeCertsInfoHashStd_t *cihash;
         GHashTable               *ghash;
         struct in6_addr          *ip;
+        ArkimeOCSFDNSHashStd_t   *dnshash;
     };
     uint32_t                   jsonSize;
 } ArkimeField_t;
@@ -1321,12 +1391,14 @@ gboolean arkime_field_ip4_add(int pos, ArkimeSession_t *session, uint32_t i);
 gboolean arkime_field_ip6_add(int pos, ArkimeSession_t *session, const uint8_t *val);
 gboolean arkime_field_ip_add_str(int pos, ArkimeSession_t *session, const char *str);
 gboolean arkime_field_certsinfo_add(int pos, ArkimeSession_t *session, ArkimeCertsInfo_t *certs, int len);
+gboolean arkime_field_ocsfdns_add(int pos, ArkimeSession_t *session, ArkimeOCSFDNS_t *dns, int len);
 gboolean arkime_field_float_add(int pos, ArkimeSession_t *session, float f);
 void arkime_field_macoui_add(ArkimeSession_t *session, int macField, int ouiField, const uint8_t *mac);
 
 int  arkime_field_count(int pos, ArkimeSession_t *session);
 void arkime_field_certsinfo_update_extra (ArkimeCertsInfo_t *certs, char *key, char *value);
 void arkime_field_certsinfo_free (ArkimeCertsInfo_t *certs);
+void arkime_field_ocsfdns_free (ArkimeOCSFDNS_t *dns);
 void arkime_field_free(ArkimeSession_t *session);
 void arkime_field_exit();
 

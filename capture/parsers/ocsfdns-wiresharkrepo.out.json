@@ -1,0 +1,1727 @@
+{
+  "firstPacket": 1112172737776,
+  "lastPacket": 1112172737793,
+  "length": 17,
+  "ipProtocol": 17,
+  "srcPayload8": "f161010000010000",
+  "dstPayload8": "f161858300010000",
+  "@timestamp": 1708351518095,
+  "source": {
+    "ip": "192.168.170.56",
+    "port": 1708,
+    "bytes": 98,
+    "packets": 1,
+    "mac-cnt": 1,
+    "mac": [
+      "00:60:08:45:e4:55"
+    ]
+  },
+  "destination": {
+    "ip": "217.13.4.24",
+    "port": 53,
+    "bytes": 98,
+    "packets": 1,
+    "geo": {
+      "country_iso_code": "NO"
+    },
+    "as": {
+      "number": 15659,
+      "full": "AS15659 NextGenTel AS",
+      "organization": {
+        "name": "NextGenTel AS"
+      }
+    },
+    "mac-cnt": 1,
+    "mac": [
+      "00:12:a9:00:32:23"
+    ]
+  },
+  "srcRIR": "ARIN",
+  "dstRIR": "RIPE",
+  "network": {
+    "packets": 2,
+    "bytes": 196,
+    "community_id": "1:hqisi7acI4ga52k6zobiWGqEIOU="
+  },
+  "client": {
+    "bytes": 56
+  },
+  "server": {
+    "bytes": 56
+  },
+  "totDataBytes": 112,
+  "segmentCnt": 1,
+  "node": "test",
+  "packetPos": [
+    3402,
+    3516
+  ],
+  "packetLen": [
+    114,
+    114
+  ],
+  "fileId": [],
+  "dns": {
+    "hostCnt": 1,
+    "host": [
+      "_ldap._tcp.dc._msdcs.utelsystems.local"
+    ],
+    "opcodeCnt": 1,
+    "opcode": [
+      "QUERY"
+    ],
+    "qcCnt": 1,
+    "qc": [
+      "IN"
+    ],
+    "qtCnt": 1,
+    "qt": [
+      "SRV"
+    ],
+    "statusCnt": 1,
+    "status": [
+      "NXDOMAIN"
+    ]
+  },
+  "dstOuiCnt": 1,
+  "dstOui": [
+    "3Com Ltd"
+  ],
+  "ocsfdnsCnt": 1,
+  "ocsfdns": [
+    {
+      "category_uid": 4,
+      "class_uid": 4003,
+      "type_uid": 400306,
+      "severity_id": 1,
+      "metadata": {
+        "product": {
+          "vendor_name": "arkime"
+        },
+        "version": "1.1.0"
+      },
+      "activity_uid": 0,
+      "time": 1708351518095,
+      "query_time": 0,
+      "query": {
+        "opcode_id": 0,
+        "opcode": "QUERY",
+        "packet_uid": 61793,
+        "hostname": "_ldap._tcp.dc._msdcs.utelsystems.local",
+        "class": "IN",
+        "type": "SRV"
+      },
+      "dst_endpoint": {
+        "ip": "217.13.4.24",
+        "port": 53
+      },
+      "src_endpoint": {
+        "ip": "192.168.170.56",
+        "port": 1708
+      },
+      "rcode_id": 3,
+      "rcode": "NXDOMAIN",
+      "answersCnt": 0,
+      "answers": []
+    }
+  ],
+  "protocolCnt": 2,
+  "protocol": [
+    "dns",
+    "udp"
+  ],
+  "srcOuiCnt": 1,
+  "srcOui": [
+    "3Com"
+  ]
+}
+{
+  "firstPacket": 1112172737915,
+  "lastPacket": 1112172737932,
+  "length": 16,
+  "ipProtocol": 17,
+  "srcPayload8": "d060010000010000",
+  "dstPayload8": "d060858300010000",
+  "@timestamp": 1708351518290,
+  "source": {
+    "ip": "192.168.170.56",
+    "port": 1710,
+    "bytes": 83,
+    "packets": 1,
+    "mac-cnt": 1,
+    "mac": [
+      "00:60:08:45:e4:55"
+    ]
+  },
+  "destination": {
+    "ip": "217.13.4.24",
+    "port": 53,
+    "bytes": 83,
+    "packets": 1,
+    "geo": {
+      "country_iso_code": "NO"
+    },
+    "as": {
+      "number": 15659,
+      "full": "AS15659 NextGenTel AS",
+      "organization": {
+        "name": "NextGenTel AS"
+      }
+    },
+    "mac-cnt": 1,
+    "mac": [
+      "00:12:a9:00:32:23"
+    ]
+  },
+  "srcRIR": "ARIN",
+  "dstRIR": "RIPE",
+  "network": {
+    "packets": 2,
+    "bytes": 166,
+    "community_id": "1:BYN5bVH5Ip1rnFDnzEUTqwo5d9E="
+  },
+  "client": {
+    "bytes": 41
+  },
+  "server": {
+    "bytes": 41
+  },
+  "totDataBytes": 82,
+  "segmentCnt": 1,
+  "node": "test",
+  "packetPos": [
+    3942,
+    4041
+  ],
+  "packetLen": [
+    99,
+    99
+  ],
+  "fileId": [],
+  "dns": {
+    "hostCnt": 1,
+    "host": [
+      "grimm.utelsystems.local"
+    ],
+    "opcodeCnt": 1,
+    "opcode": [
+      "QUERY"
+    ],
+    "qcCnt": 1,
+    "qc": [
+      "IN"
+    ],
+    "qtCnt": 1,
+    "qt": [
+      "A"
+    ],
+    "statusCnt": 1,
+    "status": [
+      "NXDOMAIN"
+    ]
+  },
+  "dstOuiCnt": 1,
+  "dstOui": [
+    "3Com Ltd"
+  ],
+  "ocsfdnsCnt": 1,
+  "ocsfdns": [
+    {
+      "category_uid": 4,
+      "class_uid": 4003,
+      "type_uid": 400306,
+      "severity_id": 1,
+      "metadata": {
+        "product": {
+          "vendor_name": "arkime"
+        },
+        "version": "1.1.0"
+      },
+      "activity_uid": 0,
+      "time": 1708351518290,
+      "query_time": 0,
+      "query": {
+        "opcode_id": 0,
+        "opcode": "QUERY",
+        "packet_uid": 53344,
+        "hostname": "grimm.utelsystems.local",
+        "class": "IN",
+        "type": "A"
+      },
+      "dst_endpoint": {
+        "ip": "217.13.4.24",
+        "port": 53
+      },
+      "src_endpoint": {
+        "ip": "192.168.170.56",
+        "port": 1710
+      },
+      "rcode_id": 3,
+      "rcode": "NXDOMAIN",
+      "answersCnt": 0,
+      "answers": []
+    }
+  ],
+  "protocolCnt": 2,
+  "protocol": [
+    "dns",
+    "udp"
+  ],
+  "srcOuiCnt": 1,
+  "srcOui": [
+    "3Com"
+  ]
+}
+{
+  "firstPacket": 1112172466496,
+  "lastPacket": 1112172737733,
+  "length": 271237,
+  "ipProtocol": 17,
+  "srcPayload8": "1032010000010000",
+  "dstPayload8": "1032818000010001",
+  "@timestamp": 1708351518227,
+  "source": {
+    "ip": "192.168.170.8",
+    "port": 32795,
+    "bytes": 892,
+    "packets": 12,
+    "mac-cnt": 1,
+    "mac": [
+      "00:e0:18:b1:0c:ad"
+    ]
+  },
+  "destination": {
+    "ip": "192.168.170.20",
+    "port": 53,
+    "bytes": 1328,
+    "packets": 12,
+    "mac-cnt": 1,
+    "mac": [
+      "00:c0:9f:32:41:8c"
+    ]
+  },
+  "srcRIR": "ARIN",
+  "dstRIR": "ARIN",
+  "network": {
+    "packets": 24,
+    "bytes": 2220,
+    "community_id": "1:PIDOtGFIHUsiDppmnIxS0PK/t7Y="
+  },
+  "client": {
+    "bytes": 388
+  },
+  "server": {
+    "bytes": 824
+  },
+  "totDataBytes": 1212,
+  "segmentCnt": 1,
+  "node": "test",
+  "packetPos": [
+    24,
+    110,
+    224,
+    310,
+    624,
+    710,
+    796,
+    897,
+    1042,
+    1132,
+    1238,
+    1328,
+    1446,
+    1536,
+    1654,
+    1744,
+    1854,
+    1946,
+    2038,
+    2129,
+    2220,
+    2315,
+    2410,
+    2497
+  ],
+  "packetLen": [
+    86,
+    114,
+    86,
+    314,
+    86,
+    86,
+    101,
+    145,
+    90,
+    106,
+    90,
+    118,
+    90,
+    118,
+    90,
+    110,
+    92,
+    92,
+    91,
+    91,
+    95,
+    95,
+    87,
+    131
+  ],
+  "fileId": [],
+  "dns": {
+    "hostCnt": 8,
+    "host": [
+      "www.example.com",
+      "www.example.notginh",
+      "google.com",
+      "www.isc.org",
+      "www.google.com",
+      "104.9.192.66.in-addr.arpa",
+      "www.netbsd.org",
+      "www.l.google.com"
+    ],
+    "ipCnt": 4,
+    "ip": [
+      "204.152.184.88",
+      "2001:4f8:0:2::d",
+      "2001:4f8:4:7:2e0:81ff:fe52:9a6b",
+      "204.152.190.12"
+    ],
+    "GEO": [
+      "US",
+      "US",
+      "US",
+      "US"
+    ],
+    "ASN": [
+      "AS1280 Internet Systems Consortium, Inc.",
+      "AS1280 Internet Systems Consortium, Inc.",
+      "AS1280 Internet Systems Consortium, Inc.",
+      "AS1280 Internet Systems Consortium, Inc."
+    ],
+    "RIR": [
+      "ARIN",
+      "",
+      "",
+      "ARIN"
+    ],
+    "mailserverHostCnt": 6,
+    "mailserverHost": [
+      "smtp6.google.com",
+      "smtp4.google.com",
+      "smtp1.google.com",
+      "smtp3.google.com",
+      "smtp2.google.com",
+      "smtp5.google.com"
+    ],
+    "mailserverIpCnt": 6,
+    "mailserverIp": [
+      "66.102.9.25",
+      "216.239.37.25",
+      "216.239.57.25",
+      "216.239.37.26",
+      "64.233.167.25",
+      "216.239.57.26"
+    ],
+    "mailserverGEO": [
+      "US",
+      "MX",
+      "US",
+      "MX",
+      "US",
+      "US"
+    ],
+    "mailserverASN": [
+      "AS15169 Google LLC",
+      "AS15169 Google LLC",
+      "AS15169 Google LLC",
+      "AS15169 Google LLC",
+      "AS15169 Google LLC",
+      "AS15169 Google LLC"
+    ],
+    "mailserverRIR": [
+      "ARIN",
+      "ARIN",
+      "ARIN",
+      "ARIN",
+      "ARIN",
+      "ARIN"
+    ],
+    "opcodeCnt": 1,
+    "opcode": [
+      "QUERY"
+    ],
+    "qcCnt": 1,
+    "qc": [
+      "IN"
+    ],
+    "qtCnt": 7,
+    "qt": [
+      "PTR",
+      "TXT",
+      "ANY",
+      "AAAA",
+      "MX",
+      "LOC",
+      "A"
+    ],
+    "statusCnt": 2,
+    "status": [
+      "NXDOMAIN",
+      "NOERROR"
+    ]
+  },
+  "dstOuiCnt": 1,
+  "dstOui": [
+    "Quanta Computer Inc"
+  ],
+  "ocsfdnsCnt": 12,
+  "ocsfdns": [
+    {
+      "category_uid": 4,
+      "class_uid": 4003,
+      "type_uid": 400306,
+      "severity_id": 1,
+      "metadata": {
+        "product": {
+          "vendor_name": "arkime"
+        },
+        "version": "1.1.0"
+      },
+      "activity_uid": 0,
+      "time": 1708351518227,
+      "query_time": 0,
+      "query": {
+        "opcode_id": 0,
+        "opcode": "QUERY",
+        "packet_uid": 65251,
+        "hostname": "www.isc.org",
+        "class": "IN",
+        "type": "ANY"
+      },
+      "dst_endpoint": {
+        "ip": "192.168.170.20",
+        "port": 53
+      },
+      "src_endpoint": {
+        "ip": "216.239.57.26",
+        "port": 32795
+      },
+      "rcode_id": 0,
+      "rcode": "NOERROR",
+      "answersCnt": 2,
+      "answers": [
+        {
+          "rdata": "2001:4f8:0:2::d",
+          "class": "IN",
+          "type": "AAAA",
+          "packet_uid": 65251,
+          "ttl": 600
+        },
+        {
+          "rdata": "204.152.184.88",
+          "class": "IN",
+          "type": "A",
+          "packet_uid": 65251,
+          "ttl": 600
+        }
+      ]
+    },
+    {
+      "category_uid": 4,
+      "class_uid": 4003,
+      "type_uid": 400306,
+      "severity_id": 1,
+      "metadata": {
+        "product": {
+          "vendor_name": "arkime"
+        },
+        "version": "1.1.0"
+      },
+      "activity_uid": 0,
+      "time": 1708351518227,
+      "query_time": 0,
+      "query": {
+        "opcode_id": 0,
+        "opcode": "QUERY",
+        "packet_uid": 61652,
+        "hostname": "www.netbsd.org",
+        "class": "IN",
+        "type": "AAAA"
+      },
+      "dst_endpoint": {
+        "ip": "192.168.170.20",
+        "port": 53
+      },
+      "src_endpoint": {
+        "ip": "216.239.57.26",
+        "port": 32795
+      },
+      "rcode_id": 0,
+      "rcode": "NOERROR",
+      "answersCnt": 1,
+      "answers": [
+        {
+          "rdata": "2001:4f8:4:7:2e0:81ff:fe52:9a6b",
+          "class": "IN",
+          "type": "AAAA",
+          "packet_uid": 61652,
+          "ttl": 86400
+        }
+      ]
+    },
+    {
+      "category_uid": 4,
+      "class_uid": 4003,
+      "type_uid": 400306,
+      "severity_id": 1,
+      "metadata": {
+        "product": {
+          "vendor_name": "arkime"
+        },
+        "version": "1.1.0"
+      },
+      "activity_uid": 0,
+      "time": 1708351518227,
+      "query_time": 0,
+      "query": {
+        "opcode_id": 0,
+        "opcode": "QUERY",
+        "packet_uid": 56482,
+        "hostname": "www.l.google.com",
+        "class": "IN",
+        "type": "AAAA"
+      },
+      "dst_endpoint": {
+        "ip": "192.168.170.20",
+        "port": 53
+      },
+      "src_endpoint": {
+        "ip": "216.239.57.26",
+        "port": 32795
+      },
+      "rcode_id": 0,
+      "rcode": "NOERROR",
+      "answersCnt": 0,
+      "answers": []
+    },
+    {
+      "category_uid": 4,
+      "class_uid": 4003,
+      "type_uid": 400306,
+      "severity_id": 1,
+      "metadata": {
+        "product": {
+          "vendor_name": "arkime"
+        },
+        "version": "1.1.0"
+      },
+      "activity_uid": 0,
+      "time": 1708351518227,
+      "query_time": 0,
+      "query": {
+        "opcode_id": 0,
+        "opcode": "QUERY",
+        "packet_uid": 63343,
+        "hostname": "google.com",
+        "class": "IN",
+        "type": "MX"
+      },
+      "dst_endpoint": {
+        "ip": "192.168.170.20",
+        "port": 53
+      },
+      "src_endpoint": {
+        "ip": "216.239.57.26",
+        "port": 32795
+      },
+      "rcode_id": 0,
+      "rcode": "NOERROR",
+      "answersCnt": 6,
+      "answers": [
+        {
+          "rdata": "(40)smtp4.google.com",
+          "class": "IN",
+          "type": "MX",
+          "packet_uid": 63343,
+          "ttl": 552
+        },
+        {
+          "rdata": "(10)smtp5.google.com",
+          "class": "IN",
+          "type": "MX",
+          "packet_uid": 63343,
+          "ttl": 552
+        },
+        {
+          "rdata": "(10)smtp6.google.com",
+          "class": "IN",
+          "type": "MX",
+          "packet_uid": 63343,
+          "ttl": 552
+        },
+        {
+          "rdata": "(10)smtp1.google.com",
+          "class": "IN",
+          "type": "MX",
+          "packet_uid": 63343,
+          "ttl": 552
+        },
+        {
+          "rdata": "(10)smtp2.google.com",
+          "class": "IN",
+          "type": "MX",
+          "packet_uid": 63343,
+          "ttl": 552
+        },
+        {
+          "rdata": "(40)smtp3.google.com",
+          "class": "IN",
+          "type": "MX",
+          "packet_uid": 63343,
+          "ttl": 552
+        }
+      ]
+    },
+    {
+      "category_uid": 4,
+      "class_uid": 4003,
+      "type_uid": 400306,
+      "severity_id": 1,
+      "metadata": {
+        "product": {
+          "vendor_name": "arkime"
+        },
+        "version": "1.1.0"
+      },
+      "activity_uid": 0,
+      "time": 1708351518227,
+      "query_time": 0,
+      "query": {
+        "opcode_id": 0,
+        "opcode": "QUERY",
+        "packet_uid": 30144,
+        "hostname": "www.netbsd.org",
+        "class": "IN",
+        "type": "A"
+      },
+      "dst_endpoint": {
+        "ip": "192.168.170.20",
+        "port": 53
+      },
+      "src_endpoint": {
+        "ip": "216.239.57.26",
+        "port": 32795
+      },
+      "rcode_id": 0,
+      "rcode": "NOERROR",
+      "answersCnt": 1,
+      "answers": [
+        {
+          "rdata": "204.152.190.12",
+          "class": "IN",
+          "type": "A",
+          "packet_uid": 30144,
+          "ttl": 82159
+        }
+      ]
+    },
+    {
+      "category_uid": 4,
+      "class_uid": 4003,
+      "type_uid": 400306,
+      "severity_id": 1,
+      "metadata": {
+        "product": {
+          "vendor_name": "arkime"
+        },
+        "version": "1.1.0"
+      },
+      "activity_uid": 0,
+      "time": 1708351518227,
+      "query_time": 0,
+      "query": {
+        "opcode_id": 0,
+        "opcode": "QUERY",
+        "packet_uid": 36275,
+        "hostname": "www.google.com",
+        "class": "IN",
+        "type": "AAAA"
+      },
+      "dst_endpoint": {
+        "ip": "192.168.170.20",
+        "port": 53
+      },
+      "src_endpoint": {
+        "ip": "216.239.57.26",
+        "port": 32795
+      },
+      "rcode_id": 0,
+      "rcode": "NOERROR",
+      "answersCnt": 1,
+      "answers": [
+        {
+          "rdata": "www.l.google.com",
+          "class": "IN",
+          "type": "CNAME",
+          "packet_uid": 36275,
+          "ttl": 633
+        }
+      ]
+    },
+    {
+      "category_uid": 4,
+      "class_uid": 4003,
+      "type_uid": 400306,
+      "severity_id": 1,
+      "metadata": {
+        "product": {
+          "vendor_name": "arkime"
+        },
+        "version": "1.1.0"
+      },
+      "activity_uid": 0,
+      "time": 1708351518227,
+      "query_time": 0,
+      "query": {
+        "opcode_id": 0,
+        "opcode": "QUERY",
+        "packet_uid": 4146,
+        "hostname": "google.com",
+        "class": "IN",
+        "type": "TXT"
+      },
+      "dst_endpoint": {
+        "ip": "192.168.170.20",
+        "port": 53
+      },
+      "src_endpoint": {
+        "ip": "216.239.57.26",
+        "port": 32795
+      },
+      "rcode_id": 0,
+      "rcode": "NOERROR",
+      "answersCnt": 1,
+      "answers": [
+        {
+          "class": "IN",
+          "type": "TXT",
+          "packet_uid": 4146,
+          "ttl": 270
+        }
+      ]
+    },
+    {
+      "category_uid": 4,
+      "class_uid": 4003,
+      "type_uid": 400306,
+      "severity_id": 1,
+      "metadata": {
+        "product": {
+          "vendor_name": "arkime"
+        },
+        "version": "1.1.0"
+      },
+      "activity_uid": 0,
+      "time": 1708351518227,
+      "query_time": 0,
+      "query": {
+        "opcode_id": 0,
+        "opcode": "QUERY",
+        "packet_uid": 39867,
+        "hostname": "104.9.192.66.in-addr.arpa",
+        "class": "IN",
+        "type": "PTR"
+      },
+      "dst_endpoint": {
+        "ip": "192.168.170.20",
+        "port": 53
+      },
+      "src_endpoint": {
+        "ip": "216.239.57.26",
+        "port": 32795
+      },
+      "rcode_id": 0,
+      "rcode": "NOERROR",
+      "answersCnt": 1,
+      "answers": [
+        {
+          "class": "IN",
+          "type": "PTR",
+          "packet_uid": 39867,
+          "ttl": 86309
+        }
+      ]
+    },
+    {
+      "category_uid": 4,
+      "class_uid": 4003,
+      "type_uid": 400306,
+      "severity_id": 1,
+      "metadata": {
+        "product": {
+          "vendor_name": "arkime"
+        },
+        "version": "1.1.0"
+      },
+      "activity_uid": 0,
+      "time": 1708351518227,
+      "query_time": 0,
+      "query": {
+        "opcode_id": 0,
+        "opcode": "QUERY",
+        "packet_uid": 9837,
+        "hostname": "www.example.notginh",
+        "class": "IN",
+        "type": "AAAA"
+      },
+      "dst_endpoint": {
+        "ip": "192.168.170.20",
+        "port": 53
+      },
+      "src_endpoint": {
+        "ip": "216.239.57.26",
+        "port": 32795
+      },
+      "rcode_id": 3,
+      "rcode": "NXDOMAIN",
+      "answersCnt": 0,
+      "answers": []
+    },
+    {
+      "category_uid": 4,
+      "class_uid": 4003,
+      "type_uid": 400306,
+      "severity_id": 1,
+      "metadata": {
+        "product": {
+          "vendor_name": "arkime"
+        },
+        "version": "1.1.0"
+      },
+      "activity_uid": 0,
+      "time": 1708351518227,
+      "query_time": 0,
+      "query": {
+        "opcode_id": 0,
+        "opcode": "QUERY",
+        "packet_uid": 48159,
+        "hostname": "www.example.com",
+        "class": "IN",
+        "type": "AAAA"
+      },
+      "dst_endpoint": {
+        "ip": "192.168.170.20",
+        "port": 53
+      },
+      "src_endpoint": {
+        "ip": "216.239.57.26",
+        "port": 32795
+      },
+      "rcode_id": 0,
+      "rcode": "NOERROR",
+      "answersCnt": 0,
+      "answers": []
+    },
+    {
+      "category_uid": 4,
+      "class_uid": 4003,
+      "type_uid": 400306,
+      "severity_id": 1,
+      "metadata": {
+        "product": {
+          "vendor_name": "arkime"
+        },
+        "version": "1.1.0"
+      },
+      "activity_uid": 0,
+      "time": 1708351518227,
+      "query_time": 0,
+      "query": {
+        "opcode_id": 0,
+        "opcode": "QUERY",
+        "packet_uid": 32569,
+        "hostname": "www.netbsd.org",
+        "class": "IN",
+        "type": "AAAA"
+      },
+      "dst_endpoint": {
+        "ip": "192.168.170.20",
+        "port": 53
+      },
+      "src_endpoint": {
+        "ip": "216.239.57.26",
+        "port": 32795
+      },
+      "rcode_id": 0,
+      "rcode": "NOERROR",
+      "answersCnt": 1,
+      "answers": [
+        {
+          "rdata": "2001:4f8:4:7:2e0:81ff:fe52:9a6b",
+          "class": "IN",
+          "type": "AAAA",
+          "packet_uid": 32569,
+          "ttl": 86340
+        }
+      ]
+    },
+    {
+      "category_uid": 4,
+      "class_uid": 4003,
+      "type_uid": 400306,
+      "severity_id": 1,
+      "metadata": {
+        "product": {
+          "vendor_name": "arkime"
+        },
+        "version": "1.1.0"
+      },
+      "activity_uid": 0,
+      "time": 1708351518227,
+      "query_time": 0,
+      "query": {
+        "opcode_id": 0,
+        "opcode": "QUERY",
+        "packet_uid": 18849,
+        "hostname": "google.com",
+        "class": "IN",
+        "type": "LOC"
+      },
+      "dst_endpoint": {
+        "ip": "192.168.170.20",
+        "port": 53
+      },
+      "src_endpoint": {
+        "ip": "216.239.57.26",
+        "port": 32795
+      },
+      "rcode_id": 0,
+      "rcode": "NOERROR",
+      "answersCnt": 0,
+      "answers": []
+    }
+  ],
+  "protocolCnt": 2,
+  "protocol": [
+    "dns",
+    "udp"
+  ],
+  "srcOuiCnt": 1,
+  "srcOui": [
+    "Asustek"
+  ],
+  "tagsCnt": 1,
+  "tags": [
+    "dns-question-answer-name-mismatch"
+  ]
+}
+{
+  "firstPacket": 1112172737794,
+  "lastPacket": 1112172737813,
+  "length": 19,
+  "ipProtocol": 17,
+  "srcPayload8": "8361010000010000",
+  "dstPayload8": "8361858300010000",
+  "@timestamp": 1708351518295,
+  "source": {
+    "ip": "192.168.170.56",
+    "port": 1709,
+    "bytes": 140,
+    "packets": 1,
+    "mac-cnt": 1,
+    "mac": [
+      "00:60:08:45:e4:55"
+    ]
+  },
+  "destination": {
+    "ip": "217.13.4.24",
+    "port": 53,
+    "bytes": 140,
+    "packets": 1,
+    "geo": {
+      "country_iso_code": "NO"
+    },
+    "as": {
+      "number": 15659,
+      "full": "AS15659 NextGenTel AS",
+      "organization": {
+        "name": "NextGenTel AS"
+      }
+    },
+    "mac-cnt": 1,
+    "mac": [
+      "00:12:a9:00:32:23"
+    ]
+  },
+  "srcRIR": "ARIN",
+  "dstRIR": "RIPE",
+  "network": {
+    "packets": 2,
+    "bytes": 280,
+    "community_id": "1:plvYpJqXTOAQPov3pvYacIRfowE="
+  },
+  "client": {
+    "bytes": 98
+  },
+  "server": {
+    "bytes": 98
+  },
+  "totDataBytes": 196,
+  "segmentCnt": 1,
+  "node": "test",
+  "packetPos": [
+    3630,
+    3786
+  ],
+  "packetLen": [
+    156,
+    156
+  ],
+  "fileId": [],
+  "dns": {
+    "hostCnt": 1,
+    "host": [
+      "_ldap._tcp.05b5292b-34b8-4fb7-85a3-8beef5fd2069.domains._msdcs.utelsystems.local"
+    ],
+    "opcodeCnt": 1,
+    "opcode": [
+      "QUERY"
+    ],
+    "qcCnt": 1,
+    "qc": [
+      "IN"
+    ],
+    "qtCnt": 1,
+    "qt": [
+      "SRV"
+    ],
+    "statusCnt": 1,
+    "status": [
+      "NXDOMAIN"
+    ]
+  },
+  "dstOuiCnt": 1,
+  "dstOui": [
+    "3Com Ltd"
+  ],
+  "ocsfdnsCnt": 1,
+  "ocsfdns": [
+    {
+      "category_uid": 4,
+      "class_uid": 4003,
+      "type_uid": 400306,
+      "severity_id": 1,
+      "metadata": {
+        "product": {
+          "vendor_name": "arkime"
+        },
+        "version": "1.1.0"
+      },
+      "activity_uid": 0,
+      "time": 1708351518295,
+      "query_time": 0,
+      "query": {
+        "opcode_id": 0,
+        "opcode": "QUERY",
+        "packet_uid": 33633,
+        "hostname": "_ldap._tcp.05b5292b-34b8-4fb7-85a3-8beef5fd2069.domains._msdcs.utelsystems.local",
+        "class": "IN",
+        "type": "SRV"
+      },
+      "dst_endpoint": {
+        "ip": "217.13.4.24",
+        "port": 53
+      },
+      "src_endpoint": {
+        "ip": "192.168.170.56",
+        "port": 1709
+      },
+      "rcode_id": 3,
+      "rcode": "NXDOMAIN",
+      "answersCnt": 0,
+      "answers": []
+    }
+  ],
+  "protocolCnt": 2,
+  "protocol": [
+    "dns",
+    "udp"
+  ],
+  "srcOuiCnt": 1,
+  "srcOui": [
+    "3Com"
+  ]
+}
+{
+  "firstPacket": 1112172745357,
+  "lastPacket": 1112172745375,
+  "length": 18,
+  "ipProtocol": 17,
+  "srcPayload8": "7663010000010000",
+  "dstPayload8": "7663858300010000",
+  "@timestamp": 1708351518296,
+  "source": {
+    "ip": "192.168.170.56",
+    "port": 1711,
+    "bytes": 83,
+    "packets": 1,
+    "mac-cnt": 1,
+    "mac": [
+      "00:60:08:45:e4:55"
+    ]
+  },
+  "destination": {
+    "ip": "217.13.4.24",
+    "port": 53,
+    "bytes": 83,
+    "packets": 1,
+    "geo": {
+      "country_iso_code": "NO"
+    },
+    "as": {
+      "number": 15659,
+      "full": "AS15659 NextGenTel AS",
+      "organization": {
+        "name": "NextGenTel AS"
+      }
+    },
+    "mac-cnt": 1,
+    "mac": [
+      "00:12:a9:00:32:23"
+    ]
+  },
+  "srcRIR": "ARIN",
+  "dstRIR": "RIPE",
+  "network": {
+    "packets": 2,
+    "bytes": 166,
+    "community_id": "1:yyjGfQMyZcoNoQa+U4siXkQP9K4="
+  },
+  "client": {
+    "bytes": 41
+  },
+  "server": {
+    "bytes": 41
+  },
+  "totDataBytes": 82,
+  "segmentCnt": 1,
+  "node": "test",
+  "packetPos": [
+    4140,
+    4239
+  ],
+  "packetLen": [
+    99,
+    99
+  ],
+  "fileId": [],
+  "dns": {
+    "hostCnt": 1,
+    "host": [
+      "grimm.utelsystems.local"
+    ],
+    "opcodeCnt": 1,
+    "opcode": [
+      "QUERY"
+    ],
+    "qcCnt": 1,
+    "qc": [
+      "IN"
+    ],
+    "qtCnt": 1,
+    "qt": [
+      "A"
+    ],
+    "statusCnt": 1,
+    "status": [
+      "NXDOMAIN"
+    ]
+  },
+  "dstOuiCnt": 1,
+  "dstOui": [
+    "3Com Ltd"
+  ],
+  "ocsfdnsCnt": 1,
+  "ocsfdns": [
+    {
+      "category_uid": 4,
+      "class_uid": 4003,
+      "type_uid": 400306,
+      "severity_id": 1,
+      "metadata": {
+        "product": {
+          "vendor_name": "arkime"
+        },
+        "version": "1.1.0"
+      },
+      "activity_uid": 0,
+      "time": 1708351518296,
+      "query_time": 0,
+      "query": {
+        "opcode_id": 0,
+        "opcode": "QUERY",
+        "packet_uid": 30307,
+        "hostname": "grimm.utelsystems.local",
+        "class": "IN",
+        "type": "A"
+      },
+      "dst_endpoint": {
+        "ip": "217.13.4.24",
+        "port": 53
+      },
+      "src_endpoint": {
+        "ip": "192.168.170.56",
+        "port": 1711
+      },
+      "rcode_id": 3,
+      "rcode": "NXDOMAIN",
+      "answersCnt": 0,
+      "answers": []
+    }
+  ],
+  "protocolCnt": 2,
+  "protocol": [
+    "dns",
+    "udp"
+  ],
+  "srcOuiCnt": 1,
+  "srcOui": [
+    "3Com"
+  ]
+}
+{
+  "firstPacket": 1112172737755,
+  "lastPacket": 1112172737775,
+  "length": 19,
+  "ipProtocol": 17,
+  "srcPayload8": "326e010000010000",
+  "dstPayload8": "326e858300010000",
+  "@timestamp": 1708351518297,
+  "source": {
+    "ip": "192.168.170.56",
+    "port": 1707,
+    "bytes": 129,
+    "packets": 1,
+    "mac-cnt": 1,
+    "mac": [
+      "00:60:08:45:e4:55"
+    ]
+  },
+  "destination": {
+    "ip": "217.13.4.24",
+    "port": 53,
+    "bytes": 129,
+    "packets": 1,
+    "geo": {
+      "country_iso_code": "NO"
+    },
+    "as": {
+      "number": 15659,
+      "full": "AS15659 NextGenTel AS",
+      "organization": {
+        "name": "NextGenTel AS"
+      }
+    },
+    "mac-cnt": 1,
+    "mac": [
+      "00:12:a9:00:32:23"
+    ]
+  },
+  "srcRIR": "ARIN",
+  "dstRIR": "RIPE",
+  "network": {
+    "packets": 2,
+    "bytes": 258,
+    "community_id": "1:ohgJJxCtl8hquEFlCrXctgmMr5I="
+  },
+  "client": {
+    "bytes": 87
+  },
+  "server": {
+    "bytes": 87
+  },
+  "totDataBytes": 174,
+  "segmentCnt": 1,
+  "node": "test",
+  "packetPos": [
+    2930,
+    3257
+  ],
+  "packetLen": [
+    145,
+    145
+  ],
+  "fileId": [],
+  "dns": {
+    "hostCnt": 1,
+    "host": [
+      "_ldap._tcp.default-first-site-name._sites.dc._msdcs.utelsystems.local"
+    ],
+    "opcodeCnt": 1,
+    "opcode": [
+      "QUERY"
+    ],
+    "qcCnt": 1,
+    "qc": [
+      "IN"
+    ],
+    "qtCnt": 1,
+    "qt": [
+      "SRV"
+    ],
+    "statusCnt": 1,
+    "status": [
+      "NXDOMAIN"
+    ]
+  },
+  "dstOuiCnt": 1,
+  "dstOui": [
+    "3Com Ltd"
+  ],
+  "ocsfdnsCnt": 1,
+  "ocsfdns": [
+    {
+      "category_uid": 4,
+      "class_uid": 4003,
+      "type_uid": 400306,
+      "severity_id": 1,
+      "metadata": {
+        "product": {
+          "vendor_name": "arkime"
+        },
+        "version": "1.1.0"
+      },
+      "activity_uid": 0,
+      "time": 1708351518297,
+      "query_time": 0,
+      "query": {
+        "opcode_id": 0,
+        "opcode": "QUERY",
+        "packet_uid": 12910,
+        "hostname": "_ldap._tcp.default-first-site-name._sites.dc._msdcs.utelsystems.local",
+        "class": "IN",
+        "type": "SRV"
+      },
+      "dst_endpoint": {
+        "ip": "217.13.4.24",
+        "port": 53
+      },
+      "src_endpoint": {
+        "ip": "192.168.170.56",
+        "port": 1707
+      },
+      "rcode_id": 3,
+      "rcode": "NXDOMAIN",
+      "answersCnt": 0,
+      "answers": []
+    }
+  ],
+  "protocolCnt": 2,
+  "protocol": [
+    "dns",
+    "udp"
+  ],
+  "srcOuiCnt": 1,
+  "srcOui": [
+    "3Com"
+  ]
+}
+{
+  "firstPacket": 1112172737740,
+  "lastPacket": 1112172737758,
+  "length": 18,
+  "ipProtocol": 17,
+  "srcPayload8": "208a010000010000",
+  "dstPayload8": "208a818000010004",
+  "@timestamp": 1708351518297,
+  "source": {
+    "ip": "192.168.170.8",
+    "port": 32797,
+    "bytes": 67,
+    "packets": 1,
+    "mac-cnt": 1,
+    "mac": [
+      "00:e0:18:b1:0c:ad"
+    ]
+  },
+  "destination": {
+    "ip": "192.168.170.20",
+    "port": 53,
+    "bytes": 166,
+    "packets": 1,
+    "mac-cnt": 1,
+    "mac": [
+      "00:c0:9f:32:41:8c"
+    ]
+  },
+  "srcRIR": "ARIN",
+  "dstRIR": "ARIN",
+  "network": {
+    "packets": 2,
+    "bytes": 233,
+    "community_id": "1:1PV+BXh7g/oZoNfFL5dz1Vkf+xo="
+  },
+  "client": {
+    "bytes": 25
+  },
+  "server": {
+    "bytes": 124
+  },
+  "totDataBytes": 149,
+  "segmentCnt": 1,
+  "node": "test",
+  "packetPos": [
+    2847,
+    3075
+  ],
+  "packetLen": [
+    83,
+    182
+  ],
+  "fileId": [],
+  "dns": {
+    "hostCnt": 1,
+    "host": [
+      "isc.org"
+    ],
+    "nameserverHostCnt": 4,
+    "nameserverHost": [
+      "ns-ext.sth1.isc.org",
+      "ns-ext.nrt1.isc.org",
+      "ns-ext.lga1.isc.org",
+      "ns-ext.isc.org"
+    ],
+    "opcodeCnt": 1,
+    "opcode": [
+      "QUERY"
+    ],
+    "qcCnt": 1,
+    "qc": [
+      "IN"
+    ],
+    "qtCnt": 1,
+    "qt": [
+      "NS"
+    ],
+    "statusCnt": 1,
+    "status": [
+      "NOERROR"
+    ]
+  },
+  "dstOuiCnt": 1,
+  "dstOui": [
+    "Quanta Computer Inc"
+  ],
+  "ocsfdnsCnt": 1,
+  "ocsfdns": [
+    {
+      "category_uid": 4,
+      "class_uid": 4003,
+      "type_uid": 400306,
+      "severity_id": 1,
+      "metadata": {
+        "product": {
+          "vendor_name": "arkime"
+        },
+        "version": "1.1.0"
+      },
+      "activity_uid": 0,
+      "time": 1708351518297,
+      "query_time": 0,
+      "query": {
+        "opcode_id": 0,
+        "opcode": "QUERY",
+        "packet_uid": 8330,
+        "hostname": "isc.org",
+        "class": "IN",
+        "type": "NS"
+      },
+      "dst_endpoint": {
+        "ip": "192.168.170.20",
+        "port": 53
+      },
+      "src_endpoint": {
+        "ip": "192.168.170.8",
+        "port": 32797
+      },
+      "rcode_id": 0,
+      "rcode": "NOERROR",
+      "answersCnt": 4,
+      "answers": [
+        {
+          "rdata": "ns-ext.nrt1.isc.org",
+          "class": "IN",
+          "type": "NS",
+          "packet_uid": 8330,
+          "ttl": 3600
+        },
+        {
+          "rdata": "ns-ext.sth1.isc.org",
+          "class": "IN",
+          "type": "NS",
+          "packet_uid": 8330,
+          "ttl": 3600
+        },
+        {
+          "rdata": "ns-ext.isc.org",
+          "class": "IN",
+          "type": "NS",
+          "packet_uid": 8330,
+          "ttl": 3600
+        },
+        {
+          "rdata": "ns-ext.lga1.isc.org",
+          "class": "IN",
+          "type": "NS",
+          "packet_uid": 8330,
+          "ttl": 3600
+        }
+      ]
+    }
+  ],
+  "protocolCnt": 2,
+  "protocol": [
+    "dns",
+    "udp"
+  ],
+  "srcOuiCnt": 1,
+  "srcOui": [
+    "Asustek"
+  ]
+}
+{
+  "firstPacket": 1112172737737,
+  "lastPacket": 1112172737737,
+  "length": 0,
+  "ipProtocol": 17,
+  "srcPayload8": "5a53010000010000",
+  "dstPayload8": "5a53858000010001",
+  "@timestamp": 1708351518301,
+  "source": {
+    "ip": "192.168.170.8",
+    "port": 32796,
+    "bytes": 82,
+    "packets": 1,
+    "mac-cnt": 1,
+    "mac": [
+      "00:e0:18:b1:0c:ad"
+    ]
+  },
+  "destination": {
+    "ip": "192.168.170.20",
+    "port": 53,
+    "bytes": 105,
+    "packets": 1,
+    "mac-cnt": 1,
+    "mac": [
+      "00:c0:9f:32:41:8c"
+    ]
+  },
+  "srcRIR": "ARIN",
+  "dstRIR": "ARIN",
+  "network": {
+    "packets": 2,
+    "bytes": 187,
+    "community_id": "1:5hLk4/1TLHDVutfqIPb3yiUsYBE="
+  },
+  "client": {
+    "bytes": 40
+  },
+  "server": {
+    "bytes": 63
+  },
+  "totDataBytes": 103,
+  "segmentCnt": 1,
+  "node": "test",
+  "packetPos": [
+    2628,
+    2726
+  ],
+  "packetLen": [
+    98,
+    121
+  ],
+  "fileId": [],
+  "dns": {
+    "hostCnt": 1,
+    "host": [
+      "1.0.0.127.in-addr.arpa"
+    ],
+    "opcodeCnt": 1,
+    "opcode": [
+      "QUERY"
+    ],
+    "qcCnt": 1,
+    "qc": [
+      "IN"
+    ],
+    "qtCnt": 1,
+    "qt": [
+      "PTR"
+    ],
+    "statusCnt": 1,
+    "status": [
+      "NOERROR"
+    ]
+  },
+  "dstOuiCnt": 1,
+  "dstOui": [
+    "Quanta Computer Inc"
+  ],
+  "ocsfdnsCnt": 1,
+  "ocsfdns": [
+    {
+      "category_uid": 4,
+      "class_uid": 4003,
+      "type_uid": 400306,
+      "severity_id": 1,
+      "metadata": {
+        "product": {
+          "vendor_name": "arkime"
+        },
+        "version": "1.1.0"
+      },
+      "activity_uid": 0,
+      "time": 1708351518301,
+      "query_time": 0,
+      "query": {
+        "opcode_id": 0,
+        "opcode": "QUERY",
+        "packet_uid": 23123,
+        "hostname": "1.0.0.127.in-addr.arpa",
+        "class": "IN",
+        "type": "PTR"
+      },
+      "dst_endpoint": {
+        "ip": "192.168.170.20",
+        "port": 53
+      },
+      "src_endpoint": {
+        "ip": "192.168.170.8",
+        "port": 32796
+      },
+      "rcode_id": 0,
+      "rcode": "NOERROR",
+      "answersCnt": 1,
+      "answers": [
+        {
+          "class": "IN",
+          "type": "PTR",
+          "packet_uid": 23123,
+          "ttl": 3600
+        }
+      ]
+    }
+  ],
+  "protocolCnt": 2,
+  "protocol": [
+    "dns",
+    "udp"
+  ],
+  "srcOuiCnt": 1,
+  "srcOui": [
+    "Asustek"
+  ]
+}

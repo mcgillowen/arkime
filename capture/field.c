@@ -1302,6 +1302,84 @@ gboolean arkime_field_certsinfo_add(int pos, ArkimeSession_t *session, ArkimeCer
     }
 }
 /******************************************************************************/
+SUPPRESS_UNSIGNED_INTEGER_OVERFLOW
+SUPPRESS_SHIFT
+SUPPRESS_INT_CONVERSION
+uint32_t arkime_field_ocsfdns_hash(const void *key)
+{
+    ArkimeOCSFDNS_t *dns = (ArkimeOCSFDNS_t *)key;
+
+    // TODO: implement the hash of OCSF DNS
+    return (dns->query_ts.tv_usec << 16 | dns->query.packet_uid);
+}
+
+/******************************************************************************/
+int arkime_field_ocsfdns_cmp(const void *keyv, const void *elementv)
+{
+    ArkimeOCSFDNS_t *key = (ArkimeOCSFDNS_t *)keyv;
+    ArkimeOCSFDNS_t *element = (ArkimeOCSFDNS_t *)elementv;
+
+    // TODO: implement the comparison of OCSF DNS
+    // Check the query_ts first, if it doesn't match then it's very unlikely they are
+    // the same query
+    if (
+        (((uint64_t)key->query_ts.tv_sec) * 1000 + ((uint64_t)key->query_ts.tv_usec) / 1000) !=
+        (((uint64_t)element->query_ts.tv_sec) * 1000 + ((uint64_t)element->query_ts.tv_usec) / 1000)
+        ) {
+            return 0;
+    }
+
+    // Check the query fields
+    if ( ! (key->query.packet_uid == element->query.packet_uid))
+        return 0;
+    if ( ! (key->query.opcode_id == element->query.opcode_id))
+        return 0;
+    if (strcmp(key->query.hostname, element->query.hostname) != 0)
+        return 0;
+    if (strcmp(key->query.class, element->query.class) != 0)
+        return 0;
+    if (strcmp(key->query.type, element->query.type) != 0)
+        return 0;
+
+    return 1;
+}
+/******************************************************************************/
+gboolean arkime_field_ocsfdns_add(int pos, ArkimeSession_t *session, ArkimeOCSFDNS_t *dns, int len)
+{
+    ArkimeField_t             *field;
+    ArkimeOCSFDNSHashStd_t    *hash;
+    ArkimeOCSFDNS_t           *hdns;
+
+    if (!session->fields[pos]) {
+        field = ARKIME_TYPE_ALLOC(ArkimeField_t);
+        session->fields[pos] = field;
+        field->jsonSize = 3 + config.fields[pos]->dbFieldLen + 120 + len;
+        switch (config.fields[pos]->type) {
+        case ARKIME_FIELD_TYPE_OCSFDNS:
+            hash = ARKIME_TYPE_ALLOC(ArkimeOCSFDNSHashStd_t);
+            HASH_INIT(t_, *hash, arkime_field_ocsfdns_hash, arkime_field_ocsfdns_cmp);
+            field->dnshash = hash;
+            HASH_ADD(t_, *hash, dns, dns);
+            return TRUE;
+        default:
+            LOGEXIT("ERROR - Not a OCSF DNS %s field", config.fields[pos]->dbField);
+        }
+    }
+
+    field = session->fields[pos];
+    switch (config.fields[pos]->type) {
+    case ARKIME_FIELD_TYPE_OCSFDNS:
+        HASH_FIND(t_, *(field->dnshash), dns, hdns);
+        if (hdns)
+            return FALSE;
+        field->jsonSize += 3 + 120 + len;
+        HASH_ADD(t_, *(field->dnshash), dns, dns);
+        return TRUE;
+    default:
+        LOGEXIT("ERROR - Not a OCSF DNS %s field", config.fields[pos]->dbField);
+    }
+}
+/******************************************************************************/
 void arkime_field_macoui_add(ArkimeSession_t *session, int macField, int ouiField, const uint8_t *mac)
 {
     char str[20];
@@ -1327,6 +1405,8 @@ void arkime_field_free(ArkimeSession_t *session)
     ArkimeIntHashStd_t       *ihash;
     ArkimeCertsInfo_t        *hci;
     ArkimeCertsInfoHashStd_t *cihash;
+    ArkimeOCSFDNS_t          *dns;
+    ArkimeOCSFDNSHashStd_t   *dnshash;
 
     for (pos = 0; pos < session->maxFields; pos++) {
         ArkimeField_t        *field;
@@ -1381,6 +1461,13 @@ void arkime_field_free(ArkimeSession_t *session)
                 arkime_field_certsinfo_free(hci);
             }
             ARKIME_TYPE_FREE(ArkimeCertsInfoHashStd_t, cihash);
+            break;
+        case ARKIME_FIELD_TYPE_OCSFDNS:
+            dnshash = session->fields[pos]->dnshash;
+            HASH_FORALL_POP_HEAD2(t_, *dnshash, dns) {
+                arkime_field_ocsfdns_free(dns);
+            }
+            ARKIME_TYPE_FREE(ArkimeOCSFDNSHashStd_t, dnshash);
             break;
         } // switch
         ARKIME_TYPE_FREE(ArkimeField_t, session->fields[pos]);
@@ -1445,6 +1532,24 @@ void arkime_field_certsinfo_free (ArkimeCertsInfo_t *certs)
     ARKIME_TYPE_FREE(ArkimeCertsInfo_t, certs);
 }
 /******************************************************************************/
+void arkime_field_ocsfdns_free (ArkimeOCSFDNS_t *dns)
+{
+    ArkimeOCSFDNSAnswer_t *answer;
+
+    while (DLL_POP_HEAD(t_, &dns->answers, answer)) {
+        // TODO: Free the RDATA values correctly
+        g_free(answer->class);
+        g_free(answer->type);
+        ARKIME_TYPE_FREE(ArkimeOCSFDNSAnswer_t, answer);
+    }
+
+    g_free(dns->query.hostname);
+    g_free(dns->query.class);
+    g_free(dns->query.type);
+
+    ARKIME_TYPE_FREE(ArkimeOCSFDNS_t, dns);
+}
+/******************************************************************************/
 int arkime_field_count(int pos, ArkimeSession_t *session)
 {
     ArkimeField_t         *field;
@@ -1476,6 +1581,8 @@ int arkime_field_count(int pos, ArkimeSession_t *session)
         return g_hash_table_size(field->ghash);
     case ARKIME_FIELD_TYPE_CERTSINFO:
         return HASH_COUNT(s_, *(field->cihash));
+    case ARKIME_FIELD_TYPE_OCSFDNS:
+        return HASH_COUNT(s_, *(field->dnshash));
     default:
         LOGEXIT("ERROR - Unknown field type for counting %s %d", config.fields[pos]->dbField, config.fields[pos]->type);
     }
@@ -1603,6 +1710,7 @@ void arkime_field_ops_run_match(ArkimeSession_t *session, ArkimeFieldOps_t *ops,
             arkime_field_string_add(fieldPos, session, op->str, op->strLenOrInt, TRUE);
             break;
         case ARKIME_FIELD_TYPE_CERTSINFO:
+        case ARKIME_FIELD_TYPE_OCSFDNS:
             // Unsupported
             break;
         }

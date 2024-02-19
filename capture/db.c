@@ -521,6 +521,7 @@ void arkime_db_save_session(ArkimeSession_t *session, int final)
     gpointer               ival;
     char                   ipsrc[INET6_ADDRSTRLEN];
     char                   ipdst[INET6_ADDRSTRLEN];
+    char                   ipAAAA[INET6_ADDRSTRLEN];
 
     /* Let the plugins finish */
     if (pluginsCbs & ARKIME_PLUGIN_SAVE)
@@ -1323,6 +1324,123 @@ void arkime_db_save_session(ArkimeSession_t *session, int final)
 
             BSB_EXPORT_rewind(jbsb, 1); // Remove last comma
             BSB_EXPORT_cstr(jbsb, "],");
+
+            break;
+        }
+        case ARKIME_FIELD_TYPE_OCSFDNS: {
+            ArkimeOCSFDNSHashStd_t *dnshash = session->fields[pos]->dnshash;
+
+            BSB_EXPORT_sprintf(jbsb, "\"ocsfdnsCnt\":%d,", HASH_COUNT(t_, *dnshash));
+            BSB_EXPORT_cstr(jbsb, "\"ocsfdns\":[");
+
+            ArkimeOCSFDNS_t *dns;
+
+            HASH_FORALL_POP_HEAD2(t_, *dnshash, dns) {
+                BSB_EXPORT_u08(jbsb, '{');
+
+                BSB_EXPORT_cstr(jbsb, "\"category_uid\":4,");
+                BSB_EXPORT_cstr(jbsb, "\"class_uid\":4003,");
+                BSB_EXPORT_cstr(jbsb, "\"type_uid\":400306,");
+                BSB_EXPORT_cstr(jbsb, "\"severity_id\":1,");
+                BSB_EXPORT_cstr(jbsb, "\"metadata\":{\"product\":{\"vendor_name\":\"arkime\"},\"version\":\"1.1.0\"},");
+
+                BSB_EXPORT_sprintf(jbsb, "\"activity_uid\":%u,", dns->activity_id);
+
+                BSB_EXPORT_sprintf(jbsb,
+                       "\"time\":%" PRIu64 ",",
+                       ((uint64_t)currentTime.tv_sec) * 1000 + ((uint64_t)currentTime.tv_usec) / 1000);
+
+                BSB_EXPORT_sprintf(jbsb,
+                       "\"query_time\":%" PRIu64 ",",
+                       ((uint64_t)dns->query_ts.tv_sec) * 1000 + ((uint64_t)dns->query_ts.tv_usec) / 1000);
+
+                BSB_EXPORT_cstr(jbsb, "\"query\":{");
+                BSB_EXPORT_sprintf(jbsb, "\"opcode_id\":%u,", dns->query.opcode_id);
+                BSB_EXPORT_sprintf(jbsb, "\"opcode\":\"%s\",", dns->query.opcode);
+                BSB_EXPORT_sprintf(jbsb, "\"packet_uid\":%u,", dns->query.packet_uid);
+                BSB_EXPORT_sprintf(jbsb, "\"hostname\":\"%s\",", dns->query.hostname);
+                BSB_EXPORT_sprintf(jbsb, "\"class\":\"%s\",", dns->query.class);
+                BSB_EXPORT_sprintf(jbsb, "\"type\":\"%s\",", dns->query.type);
+                BSB_EXPORT_rewind(jbsb, 1); // Remove last comma
+                BSB_EXPORT_u08(jbsb, '}');
+                BSB_EXPORT_u08(jbsb, ',');
+
+                BSB_EXPORT_cstr(jbsb, "\"dst_endpoint\":{");
+                BSB_EXPORT_sprintf(jbsb, "\"ip\":\"%s\",", ipdst);
+                BSB_EXPORT_sprintf(jbsb, "\"port\":%u,", session->port2);
+                BSB_EXPORT_rewind(jbsb, 1); // Remove last comma
+                BSB_EXPORT_u08(jbsb, '}');
+                BSB_EXPORT_u08(jbsb, ',');
+
+                BSB_EXPORT_cstr(jbsb, "\"src_endpoint\":{");
+                BSB_EXPORT_sprintf(jbsb, "\"ip\":\"%s\",", ipsrc);
+                BSB_EXPORT_sprintf(jbsb, "\"port\":%u,", session->port1);
+                BSB_EXPORT_rewind(jbsb, 1); // Remove last comma
+                BSB_EXPORT_u08(jbsb, '}');
+                BSB_EXPORT_u08(jbsb, ',');
+
+                if (dns->rcode_id != -1) {
+                    BSB_EXPORT_sprintf(jbsb, "\"rcode_id\":%u,", dns->rcode_id);
+                    BSB_EXPORT_sprintf(jbsb, "\"rcode\":\"%s\",", dns->rcode);
+                    BSB_EXPORT_sprintf(jbsb, "\"answersCnt\":%d,", DLL_COUNT(t_, &dns->answers));
+                    BSB_EXPORT_cstr(jbsb, "\"answers\":[");
+                    if (DLL_COUNT(t_, &dns->answers) == 0) {
+                        BSB_EXPORT_u08(jbsb, ']');
+                    } else {
+                        ArkimeOCSFDNSAnswer_t *answer;
+                        while (DLL_COUNT(t_, &dns->answers) > 0) {
+                            BSB_EXPORT_u08(jbsb, '{');
+                            DLL_POP_HEAD(t_, &dns->answers, answer);
+                            switch (answer->type_id) {
+                            case OCSFDNS_RR_A: {
+                                    BSB_EXPORT_sprintf(jbsb, "\"rdata\":\"%u.%u.%u.%u\",", answer->ipA & 0xff, (answer->ipA >> 8) & 0xff, (answer->ipA >> 16) & 0xff, (answer->ipA >> 24) & 0xff);
+                                    break;
+                            }
+                            case OCSFDNS_RR_NS: {
+                                BSB_EXPORT_sprintf(jbsb, "\"rdata\":\"%s\",", answer->nsdname);
+                                break;
+                            }
+                            case OCSFDNS_RR_CNAME: {
+                                BSB_EXPORT_sprintf(jbsb, "\"rdata\":\"%s\",", answer->cname);
+                                break;
+                            }
+                            case OCSFDNS_RR_MX: {
+                                BSB_EXPORT_sprintf(jbsb, "\"rdata\":\"(%u)%s\",", answer->mx->preference, answer->mx->exchange);
+                                break;
+                            }
+                            case OCSFDNS_RR_AAAA: {
+                                if (IN6_IS_ADDR_V4MAPPED((struct in6_addr *)answer->ipAAAA)) {
+                                    uint32_t ip = ARKIME_V6_TO_V4(*(struct in6_addr *)answer->ipAAAA);
+                                    snprintf(ipAAAA, sizeof(ipAAAA), "%u.%u.%u.%u", ip & 0xff, (ip >> 8) & 0xff, (ip >> 16) & 0xff, (ip >> 24) & 0xff);
+                                } else {
+                                    inet_ntop(AF_INET6, answer->ipAAAA, ipAAAA, sizeof(ipAAAA));
+                                }
+                                BSB_EXPORT_sprintf(jbsb, "\"rdata\":\"%s\",", ipAAAA);
+                                break;
+                            }
+                            }
+                            BSB_EXPORT_sprintf(jbsb, "\"class\":\"%s\",", answer->class);
+                            BSB_EXPORT_sprintf(jbsb, "\"type\":\"%s\",", answer->type);
+                            BSB_EXPORT_sprintf(jbsb, "\"packet_uid\":%u,", answer->packet_uid);
+                            BSB_EXPORT_sprintf(jbsb, "\"ttl\":%u,", answer->ttl);
+                            BSB_EXPORT_rewind(jbsb, 1); // Remove the last comma
+                            BSB_EXPORT_u08(jbsb, '}');
+                            BSB_EXPORT_u08(jbsb, ',');
+                        }
+                        BSB_EXPORT_rewind(jbsb, 1); // Remove the last comma
+                        BSB_EXPORT_u08(jbsb, ']');
+                    }
+                }
+
+                BSB_EXPORT_u08(jbsb, '}');
+                BSB_EXPORT_u08(jbsb, ',');
+            }
+            ARKIME_TYPE_FREE(ArkimeOCSFDNSHashStd_t, dnshash);
+
+            BSB_EXPORT_rewind(jbsb, 1); // Remove last comma
+            BSB_EXPORT_cstr(jbsb, "],");
+
+            break;
         }
         } /* switch */
         if (freeField) {
