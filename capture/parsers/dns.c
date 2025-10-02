@@ -32,6 +32,7 @@ typedef enum dns_type {
     DNS_RR_MX         =  15,
     DNS_RR_TXT        =  16,
     DNS_RR_AAAA       =  28,
+    DNS_RR_RRSIG      =  46,
     DNS_RR_HTTPS      =  65,
     DNS_RR_CAA        = 257
 } DNSType_t;
@@ -87,6 +88,17 @@ typedef struct dns_answer_caadata {
     char *value;
     uint8_t flags;
 } DNSCAARData_t;
+
+typedef struct dns_answer_rrsig {
+    uint16_t type_covered;
+    uint8_t  algorithm;
+    uint8_t  labels;
+    uint32_t original_ttl;
+    uint32_t expiration;
+    uint32_t inception;
+    char    *signers_name;
+    char    *signature;
+} DNSRRSigData_t;
 
 typedef struct dns_answer {
     struct dns_answer  *t_next, *t_prev;
@@ -265,6 +277,40 @@ LOCAL char *dns_name(const uint8_t *full, int fulllen, BSB *inbsb, char *name, i
     *namelen = BSB_LENGTH(nbsb);
     BSB_EXPORT_u08(nbsb, 0);
     return name;
+}
+/******************************************************************************/
+LOCAL DNSRRSigData_t *dns_parser_rr_rrsig(const uint8_t *data, int length)
+{
+    if (length < 18)
+        return NULL;
+
+    DNSRRSigData_t *rrsigData = ARKIME_TYPE_ALLOC0(DNSRRSigData_t);
+
+    BSB bsb;
+    BSB_INIT(bsb, data, length);
+    BSB_IMPORT_u16(bsb, rrsigData->type_covered);
+    BSB_IMPORT_u08(bsb, rrsigData->algorithm);
+    BSB_IMPORT_u08(bsb, rrsigData->labels);
+    BSB_IMPORT_u32(bsb, rrsigData->original_ttl);
+    BSB_IMPORT_u32(bsb, rrsigData->expiration);
+    BSB_IMPORT_u32(bsb, rrsigData->inception);
+
+    char namebuf[8000];
+    int namelen = sizeof(namebuf);
+    const char *name = dns_name(data, length, &bsb, namebuf, &namelen);
+
+    if (BSB_IS_ERROR(bsb) || !name) {
+        ARKIME_TYPE_FREE(DNSRRSigData_t, rrsigData);
+        return NULL;
+    }
+
+    rrsigData->signers_name = g_hostname_to_unicode(name);
+
+    BSB_REMAINING
+
+    rrsig->signature_length = dns_rrsig_get_signature_length(rrsig->algorithm);
+    rrsig->signature = malloc(rrsig->signature_length);
+    BSB_IMPORT_ptr(bsb, rrsig->signature, rrsig->signature_length);
 }
 /******************************************************************************/
 LOCAL DNSSVCBRData_t *dns_parser_rr_svcb(const uint8_t *data, int length)
